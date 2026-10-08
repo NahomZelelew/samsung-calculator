@@ -1,6 +1,8 @@
 body{
   background-color: rgb(229, 227, 227);
   font-family: Arial;
+  text-align: center;
+  margin-top: 100px;
 }
 .clear{
   color: red;
@@ -27,4 +29,101 @@ body{
   border: none;
   border-radius: 50px;
   padding: 10px;
+}
+.num7{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num8{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num9{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.multiplication{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num4{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num5{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num6{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.subtruction{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num1{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num2{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num3{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.addition{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.bracket{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.num0{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.point{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+}
+.equal{
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: rgb(39, 218, 39);
 }
