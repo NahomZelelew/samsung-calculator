@@ -1,38 +1,63 @@
 body {
-  background-color: #f7f7f7; 
-  font-family: Arial;
-  text-align: center;
-  margin-top: 100px;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.all {
+  width: 100%;
+  max-width: 360px;       
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.calculator-screen {
+  font-size: 40px;
+  text-align: right;
+  padding: 40px 10px 20px 10px;
+  color: #000000;
+  word-break: break-all;
 }
 
 button {
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   border-radius: 50px;
-  padding: 10px;
+  width: 68px;            
+  height: 68px;
+  margin: 6px 4px;
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.1s ease;
+  touch-action: manipulation;
 }
 
-.num7, .num8, .num9, .num4, .num5,.num6, .num1, .num2, .num3, .num0, .point {
+.num7, .num8, .num9, .num4, .num5, .num1, .num2, .num3, .num0, .point {
   background-color: #ffffff;
   color: #000000;
 }
-
 .clear, .percent, .bracket {
   background-color: #eeeeee;
   color: #000000;
 }
-
 .backspace-btn {
   background-color: #eeeeee;
   color: #27aa53;
 }
-
-.division, .multiplication, .subtraction, .addition {
+.division, .multiplication, .subtruction, .addition {
   background-color: #8c8c8c;
   color: #ffffff;
 }
-
 .equal {
   background-color: #27aa53;
   color: #ffffff;
