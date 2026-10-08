@@ -49,7 +49,7 @@ button {
   touch-action: manipulation;
 }
 
-.num7, .num8, .num9, .num4, .num5, .num1, .num2, .num3, .num0, .point {
+.num7, .num8, .num9, .num4, .num5, .num6, .num1, .num2, .num3, .num0, .point {
   background-color: #ffffff;
   color: #000000;
 }
@@ -61,7 +61,7 @@ button {
   background-color: #eeeeee;
   color: #27aa53;
 }
-.division, .multiplication, .subtruction, .addition {
+.division, .multiplication, .subtraction, .addition {
   background-color: #8c8c8c;
   color: #ffffff;
 }
