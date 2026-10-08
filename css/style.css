@@ -1,8 +1,9 @@
 body {
   background-color: #f7f7f7;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
+  text-align: center;
   margin: 0;
-  padding: 16px;
+  padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,34 +12,40 @@ body {
 }
 
 .all {
-  width: 100%;
-  max-width: 360px;       
   background-color: #ffffff;
-  padding: 20px;
+  padding: 16px;
   border-radius: 28px;
+  width: 100%;            
+  max-width: 360px;     
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .calculator-screen {
-  font-size: 40px;
+  font-size: clamp(24px, 10vw, 40px); /* Min 24px, fluidly scales at 10vw, maxes out at 40px */
   text-align: right;
-  padding: 40px 10px 20px 10px;
+  padding: 30px 10px 15px 10px;
   color: #000000;
   word-break: break-all;
 }
 
+
+p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
 button {
-  font-size: 22px;
+  font-size: 20px;
   border: none;
-  border-radius: 50px;
-  width: 68px;            
-  height: 68px;
-  margin: 6px 4px;
+  border-radius: 50%;
+  width: 22%;             
+  aspect-ratio: 1;        
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.1s ease;
   touch-action: manipulation;
 }
 
@@ -61,4 +68,9 @@ button {
 .equal {
   background-color: #27aa53;
   color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  body { background-color: #e5e3e3; }
+  button { font-size: 24px; } 
 }
