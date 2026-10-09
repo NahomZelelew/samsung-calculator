@@ -3,6 +3,7 @@ const buttons = document.querySelectorAll('button');
 
 //Create a variable to hold the running formula string
 let currentInput = '';
+let openBracketsCount = 0; 
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -31,6 +32,28 @@ buttons.forEach(button => {
         calculatorScreen.textContent = 'Error';
         currentInput = '';
       }
+      return;
+    }
+
+    if (button.classList.contains('bracket')) {
+      const lastChar = currentInput.slice(-1);
+      
+      if (currentInput === '' || ['+', '-', '*', '/', '('].includes(lastChar)) {
+        currentInput += '(';
+        openBracketsCount++; 
+      } 
+    
+      else if (openBracketsCount > 0 && !['+', '-', '*', '/'].includes(lastChar)) {
+        currentInput += ')';
+        openBracketsCount--; 
+      } 
+    
+      else {
+        currentInput += '*(';
+        openBracketsCount++;
+      }
+      
+      calculatorScreen.textContent = currentInput;
       return;
     }
 
