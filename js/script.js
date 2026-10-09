@@ -5,6 +5,21 @@ let currentInput = '';
 let openBracketsCount = 0; 
 let isResultDisplayed = false;
 
+function clearActiveOperators() {
+  buttons.forEach(btn => btn.classList.remove('active-operator'));
+}
+
+function adjustFontSize() {
+  const len = calculatorScreen.textContent.length;
+  if (len > 12) {
+    calculatorScreen.style.fontSize = '24px';
+  } else if (len > 8) {
+    calculatorScreen.style.fontSize = '30px';
+  } else {
+    calculatorScreen.style.fontSize = '40px';
+  }
+}
+
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     
@@ -12,16 +27,20 @@ buttons.forEach(button => {
       currentInput = '';
       openBracketsCount = 0;
       isResultDisplayed = false;
+      clearActiveOperators();
       calculatorScreen.textContent = '0';
+      adjustFontSize();
       return;
     }
     
     if (button.classList.contains('backspace-btn') || button.querySelector('svg')) {
+      clearActiveOperators();
       if (isResultDisplayed) {
         currentInput = '';
         openBracketsCount = 0;
         isResultDisplayed = false;
         calculatorScreen.textContent = '0';
+        adjustFontSize();
         return;
       }
       const lastChar = currentInput.slice(-1);
@@ -30,10 +49,12 @@ buttons.forEach(button => {
       
       currentInput = currentInput.slice(0, -1);
       calculatorScreen.textContent = currentInput || '0';
+      adjustFontSize();
       return;
     }
     
     if (button.classList.contains('equal')) {
+      clearActiveOperators();
       try {
         if (currentInput !== '') {
           let formattedInput = currentInput.replace(/%/g, '/100');
@@ -49,10 +70,12 @@ buttons.forEach(button => {
         openBracketsCount = 0;
         isResultDisplayed = false;
       }
+      adjustFontSize();
       return;
     }
     
     if (button.classList.contains('bracket')) {
+      clearActiveOperators();
       if (isResultDisplayed) {
         currentInput = '';
         openBracketsCount = 0;
@@ -70,10 +93,12 @@ buttons.forEach(button => {
         openBracketsCount++;
       }
       calculatorScreen.textContent = currentInput;
+      adjustFontSize();
       return;
     }
 
     if (button.classList.contains('point')) {
+      clearActiveOperators();
       if (isResultDisplayed) {
         currentInput = '';
         openBracketsCount = 0;
@@ -86,6 +111,7 @@ buttons.forEach(button => {
         currentInput += '.';
         calculatorScreen.textContent = currentInput;
       }
+      adjustFontSize();
       return;
     }
 
@@ -99,6 +125,11 @@ buttons.forEach(button => {
       const value = button.textContent.trim();
       const isOperator = ['+', '-', '*', '/'].includes(value);
 
+      clearActiveOperators();
+      if (isOperator) {
+        button.classList.add('active-operator');
+      }
+
       if (isResultDisplayed) {
         if (isOperator) {
           isResultDisplayed = false;
@@ -111,6 +142,7 @@ buttons.forEach(button => {
 
       currentInput += value;
       calculatorScreen.textContent = currentInput;
+      adjustFontSize();
     }
     
   });
