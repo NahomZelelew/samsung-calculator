@@ -18,7 +18,22 @@ buttons.forEach(button => {
       calculatorScreen.textContent = currentInput || '0'; 
       return; 
     }
-    
+
+    if (button.classList.contains('equal')) {
+      try {
+        if (currentInput !== '') {
+
+          let result = eval(currentInput);
+          currentInput = result.toString();
+          calculatorScreen.textContent = currentInput;
+        }
+      } catch (error) {
+        calculatorScreen.textContent = 'Error';
+        currentInput = '';
+      }
+      return;
+    }
+
     // Check if the clicked button is a simple number or operator
     if (
       !button.classList.contains('clear') &&
