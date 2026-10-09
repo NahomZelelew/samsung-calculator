@@ -54,6 +54,7 @@ button {
   transition: all 0.1s ease;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent; 
 }
 
 button:active {
