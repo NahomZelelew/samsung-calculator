@@ -1,6 +1,6 @@
 body {
   background-color: #f7f7f7;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
   padding: 12px;
@@ -13,31 +13,35 @@ body {
 
 .all {
   background-color: #ffffff;
-  padding: 16px;
-  border-radius: 28px;
+  padding: 20px;
+  border-radius: 32px;
   width: 100%;            
   max-width: 360px;     
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
 }
 
 .calculator-screen {
-  font-size: clamp(24px, 10vw, 40px); /* Min 24px, fluidly scales at 10vw, maxes out at 40px */
+  font-size: 40px;
   text-align: right;
-  padding: 30px 10px 15px 10px;
+  padding: 40px 14px 20px 14px;
   color: #000000;
   word-break: break-all;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: font-size 0.15s ease;
 }
-
 
 p {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 14px 0;
 }
 
 button {
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   border-radius: 50%;
   width: 22%;             
@@ -47,30 +51,76 @@ button {
   justify-content: center;
   align-items: center;
   touch-action: manipulation;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:active {
+  transform: scale(0.92);
+  filter: brightness(0.88);
 }
 
 .num7, .num8, .num9, .num4, .num5, .num6, .num1, .num2, .num3, .num0, .point {
   background-color: #ffffff;
   color: #000000;
 }
+
+.num7:hover, .num8:hover, .num9:hover, .num4:hover, .num5:hover, .num6:hover, .num1:hover, .num2:hover, .num3:hover, .num0:hover, .point:hover {
+  background-color: #f5f5f5;
+}
+
 .clear, .percent, .bracket {
   background-color: #eeeeee;
   color: #000000;
 }
+
+.clear:hover, .percent:hover, .bracket:hover {
+  background-color: #e2e2e2;
+}
+
 .backspace-btn {
   background-color: #eeeeee;
   color: #27aa53;
 }
-.division, .multiplication, .subtraction, .addition {
-  background-color: #8c8c8c;
-  color: #ffffff;
+
+.backspace-btn:hover {
+  background-color: #e2e2e2;
 }
+
+.division, .multiplication, .subtraction, .addition {
+  background-color: #eeeeee;
+  color: #000000;
+}
+
+.division:hover, .multiplication:hover, .subtraction:hover, .addition:hover {
+  background-color: #e2e2e2;
+}
+
 .equal {
   background-color: #27aa53;
   color: #ffffff;
 }
 
+.equal:hover {
+  background-color: #219247;
+}
+
+.division.active-operator, 
+.multiplication.active-operator, 
+.subtraction.active-operator, 
+.addition.active-operator {
+  background-color: #ffffff !important;
+  color: #27aa53 !important;
+  border: 2px solid #27aa53;
+  box-sizing: border-box;
+}
+
 @media (min-width: 768px) {
-  body { background-color: #e5e3e3; }
-  button { font-size: 24px; } 
+  body { 
+    background-color: #e5e3e3; 
+  }
+  button { 
+    font-size: 24px; 
+  } 
 }
