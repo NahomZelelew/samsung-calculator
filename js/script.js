@@ -3,6 +3,7 @@ const buttons = document.querySelectorAll('button');
 
 let currentInput = '';
 let openBracketsCount = 0; 
+let isResultDisplayed = false;
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -10,11 +11,19 @@ buttons.forEach(button => {
     if (button.classList.contains('clear')) {
       currentInput = '';
       openBracketsCount = 0;
+      isResultDisplayed = false;
       calculatorScreen.textContent = '0';
       return;
     }
     
     if (button.classList.contains('backspace-btn') || button.querySelector('svg')) {
+      if (isResultDisplayed) {
+        currentInput = '';
+        openBracketsCount = 0;
+        isResultDisplayed = false;
+        calculatorScreen.textContent = '0';
+        return;
+      }
       const lastChar = currentInput.slice(-1);
       if (lastChar === '(') openBracketsCount--;
       if (lastChar === ')') openBracketsCount++;
@@ -32,16 +41,23 @@ buttons.forEach(button => {
           currentInput = Number(result.toFixed(8)).toString();
           calculatorScreen.textContent = currentInput;
           openBracketsCount = 0;
+          isResultDisplayed = true;
         }
       } catch (error) {
         calculatorScreen.textContent = 'Error';
         currentInput = '';
         openBracketsCount = 0;
+        isResultDisplayed = false;
       }
       return;
     }
     
     if (button.classList.contains('bracket')) {
+      if (isResultDisplayed) {
+        currentInput = '';
+        openBracketsCount = 0;
+        isResultDisplayed = false;
+      }
       const lastChar = currentInput.slice(-1);
       if (currentInput === '' || ['+', '-', '*', '/', '('].includes(lastChar)) {
         currentInput += '(';
@@ -58,6 +74,11 @@ buttons.forEach(button => {
     }
 
     if (button.classList.contains('point')) {
+      if (isResultDisplayed) {
+        currentInput = '';
+        openBracketsCount = 0;
+        isResultDisplayed = false;
+      }
       const tokens = currentInput.split(/[\+\-\*\/]/);
       const lastNumber = tokens[tokens.length - 1];
       
@@ -76,6 +97,18 @@ buttons.forEach(button => {
       !button.classList.contains('point')
     ) {
       const value = button.textContent.trim();
+      const isOperator = ['+', '-', '*', '/'].includes(value);
+
+      if (isResultDisplayed) {
+        if (isOperator) {
+          isResultDisplayed = false;
+        } else {
+          currentInput = '';
+          openBracketsCount = 0;
+          isResultDisplayed = false;
+        }
+      }
+
       currentInput += value;
       calculatorScreen.textContent = currentInput;
     }
