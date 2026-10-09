@@ -6,6 +6,19 @@ let currentInput = '';
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
+
+    if (button.classList.contains('clear')) {
+      currentInput = ''; 
+      calculatorScreen.textContent = '0';
+      return; 
+    }
+    
+    if (button.classList.contains('backspace-btn') || button.querySelector('svg')) {
+      currentInput = currentInput.slice(0, -1); 
+      calculatorScreen.textContent = currentInput || '0'; 
+      return; 
+    }
+    
     // Check if the clicked button is a simple number or operator
     if (
       !button.classList.contains('clear') &&
